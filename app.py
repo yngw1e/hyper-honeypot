@@ -39,6 +39,7 @@ def index():
 
 
 def check_otp():
+    log_admin_request()
     try:
         if not request.args.has_key('otp'):
             return u'Нужен одноразовый пароль'
@@ -62,7 +63,6 @@ def check_otp():
         db.session.commit()
     except:
         return u'Одноразовый пароль или подпись некорректны'
-    log_admin_request()
 
 @app.route("/last_admin_requests/")
 def last_admin_requests():
